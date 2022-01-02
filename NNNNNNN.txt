@@ -1,0 +1,29 @@
+post '/NURSERY/' do
+  def convert_state name, to='name'
+    states =[
+              {:name => 'Alabama', :abbrev => 'AL'},
+              {:name => 'Alaska', :abbrev => 'AK'},
+              {:name => 'Arizona', :abbrev => 'AZ'},
+              {:name => 'Arkansas', :abbrev => 'AR'},
+              {:name => 'California', :abbrev => 'CA'},
+              {:name => 'Colorado', :abbrev => 'CO'},
+              {:name => 'Delaware', :abbrev => 'DE'},
+              {:name => 'Florida', :abbrev => 'FL'},
+              {:name => 'Georgia', :abbrev => 'GA'},
+              {:name => 'Hawaii', :abbrev => 'HI'},
+              {:name => 'Idaho', :abbrev => 'ID'},
+              {:name => 'Illinois', :abbrev => 'IL'},
+            ]
+    states.each do |state|
+      if to == 'name'
+        if state[:abbrev].downcase == name.downcase
+          return state[:name]
+        end
+      elsif to == :abbrev
+        if state[:name].downcase == name.downcase
+          return state[:abbrev].upcase
+        end
+      end
+    end
+    return
+  end
